@@ -1,0 +1,21 @@
+struct fenwick {
+  int fa[N];
+ 
+  fenwick(int n) {
+    fill_n(fa, n+1, -1);
+  }
+ 
+  int find(int x) {
+    return fa[x] < 0 ? x : fa[x] = find(fa[x]);
+  }
+ 
+  void unite(int x, int y) {
+    x = find(x);
+    y = find(y);
+   
+    if(x != y) {
+      fa[x] += fa[y];
+      fa[y] = x;
+    }
+  }
+};
